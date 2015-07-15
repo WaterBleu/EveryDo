@@ -7,8 +7,10 @@
 //
 
 #import "DetailViewController.h"
+#import "Todo.h"
 
 @interface DetailViewController ()
+@property (weak, nonatomic) IBOutlet UINavigationItem *detailViewNav;
 
 @end
 
@@ -28,7 +30,10 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        Todo *object = self.detailItem;
+        self.detailDescriptionLabel.text = object.todoDescription;
+        self.detailViewNav.title = [NSString stringWithFormat:@"%@ - %@",[object priorityTypeEnumToString:object.priority] , object.title];
+        
     }
 }
 

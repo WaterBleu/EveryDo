@@ -8,10 +8,13 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "Todo.h"
+#import "TodoTableViewCell.h"
 
 @interface MasterViewController ()
 
 @property NSMutableArray *objects;
+
 @end
 
 @implementation MasterViewController
@@ -32,6 +35,15 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    Todo *todo1 = [[Todo alloc] initWithTitle:@"todo1" andDescription:@"in todo1" andPriority:Emergency andCompleteStatus:NO];
+    Todo *todo2 = [[Todo alloc] initWithTitle:@"todo2" andDescription:@"in todo2" andPriority:High andCompleteStatus:YES];
+    Todo *todo3 = [[Todo alloc] initWithTitle:@"todo3" andDescription:@"in todo3" andPriority:Misc andCompleteStatus:NO];
+    
+    [self initDatasource];
+    [self insertToDoItem:todo1];
+    [self insertToDoItem:todo2];
+    [self insertToDoItem:todo3];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,7 +65,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
+        Todo *object = self.objects[indexPath.section][indexPath.row];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
@@ -64,18 +76,20 @@
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.objects.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSMutableArray *arr = self.objects[section];
+    return arr.count;
+}
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+
+    Todo *object = self.objects[indexPath.section][indexPath.row];
+    [cell setCell:object];
+
     return cell;
 }
 
@@ -92,5 +106,23 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
+
+#pragma mark - Custom Function
+
+- (void)initDatasource{
+    self.objects = [[NSMutableArray alloc] initWithCapacity:2];
+    self.objects[0] = [[NSMutableArray alloc] init];
+    self.objects[1] = [[NSMutableArray alloc] init];
+}
+
+- (void)insertToDoItem:(Todo*)obj{
+    if(obj.isComplete){
+        [self.objects[0] addObject:obj];
+    }
+    else
+        [self.objects[1] addObject:obj];
+}
+
+
 
 @end
