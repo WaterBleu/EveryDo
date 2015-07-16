@@ -10,8 +10,9 @@
 #import "DetailViewController.h"
 #import "Todo.h"
 #import "TodoTableViewCell.h"
+#import "CreateTodoViewController.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <TodoProtocol>
 
 @property NSMutableArray *objects;
 
@@ -55,10 +56,10 @@
     if (!self.objects) {
         self.objects = [[NSMutableArray alloc] init];
     }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self performSegueWithIdentifier:@"newTodo" sender:self];
 }
+
+//-(void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 
 #pragma mark - Segues
 
@@ -70,6 +71,10 @@
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
+    }
+    if ([[segue identifier] isEqualToString:@"newTodo"]) {
+        CreateTodoViewController *controller = segue.destinationViewController;
+        controller.delegate = self;
     }
 }
 
@@ -117,12 +122,22 @@
 
 - (void)insertToDoItem:(Todo*)obj{
     if(obj.isComplete){
-        [self.objects[0] addObject:obj];
+        [self.objects[0] insertObject:obj atIndex:0];
     }
     else
-        [self.objects[1] addObject:obj];
+        [self.objects[1] insertObject:obj atIndex:0];
 }
 
-
+- (void)retrieveTodoItem:(Todo*) obj{
+    [self insertToDoItem:obj];
+    NSIndexPath *indexPath;
+    if (obj.isComplete) {
+        indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    }
+    else
+        indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 
 @end

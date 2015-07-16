@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelPriority;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelDescription;
-@property (weak, nonatomic) IBOutlet UIImageView *ivPriority;
 
 @end
 
@@ -22,6 +21,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

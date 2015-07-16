@@ -17,6 +17,7 @@
 		BDD010D91B56C8490012C6A6 /* EveryDoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD010D81B56C8490012C6A6 /* EveryDoTests.m */; };
 		BDD010E41B56C9CC0012C6A6 /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD010E31B56C9CC0012C6A6 /* TodoTableViewCell.m */; };
 		BDD010E71B56CFA00012C6A6 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD010E61B56CFA00012C6A6 /* Todo.m */; };
+		BDD010EA1B571AEC0012C6A6 /* CreateTodoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD010E91B571AEC0012C6A6 /* CreateTodoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		BDD010E31B56C9CC0012C6A6 /* TodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewCell.m; sourceTree = "<group>"; };
 		BDD010E51B56CFA00012C6A6 /* Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Todo.h; sourceTree = "<group>"; };
 		BDD010E61B56CFA00012C6A6 /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Todo.m; sourceTree = "<group>"; };
+		BDD010E81B571AEC0012C6A6 /* CreateTodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTodoViewController.h; sourceTree = "<group>"; };
+		BDD010E91B571AEC0012C6A6 /* CreateTodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTodoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				BDD010BD1B56C8480012C6A6 /* AppDelegate.h */,
 				BDD010BE1B56C8480012C6A6 /* AppDelegate.m */,
 				BDD010C31B56C8490012C6A6 /* DetailViewController.h */,
+				BDD010E81B571AEC0012C6A6 /* CreateTodoViewController.h */,
+				BDD010E91B571AEC0012C6A6 /* CreateTodoViewController.m */,
 				BDD010C41B56C8490012C6A6 /* DetailViewController.m */,
 				BDD010C91B56C8490012C6A6 /* Images.xcassets */,
 				BDD010CB1B56C8490012C6A6 /* LaunchScreen.xib */,
@@ -235,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDD010BF1B56C8480012C6A6 /* AppDelegate.m in Sources */,
+				BDD010EA1B571AEC0012C6A6 /* CreateTodoViewController.m in Sources */,
 				BDD010E71B56CFA00012C6A6 /* Todo.m in Sources */,
 				BDD010C21B56C8480012C6A6 /* MasterViewController.m in Sources */,
 				BDD010E41B56C9CC0012C6A6 /* TodoTableViewCell.m in Sources */,
