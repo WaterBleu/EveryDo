@@ -37,9 +37,13 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    Todo *todo1 = [[Todo alloc] initWithTitle:@"todo1" andDescription:@"in todo1" andPriority:Emergency andCompleteStatus:NO];
-    Todo *todo2 = [[Todo alloc] initWithTitle:@"todo2" andDescription:@"in todo2" andPriority:High andCompleteStatus:YES];
-    Todo *todo3 = [[Todo alloc] initWithTitle:@"todo3" andDescription:@"in todo3" andPriority:Misc andCompleteStatus:NO];
+    NSAttributedString *d1 = [[NSAttributedString alloc] initWithString:@"in todo1"];
+    NSAttributedString *d2 = [[NSAttributedString alloc] initWithString:@"in todo2"];
+    NSAttributedString *d3 = [[NSAttributedString alloc] initWithString:@"in todo3"];
+    
+    Todo *todo1 = [[Todo alloc] initWithTitle:@"todo1" andDescription:d1 andPriority:Emergency andCompleteStatus:NO];
+    Todo *todo2 = [[Todo alloc] initWithTitle:@"todo2" andDescription:d2 andPriority:High andCompleteStatus:YES];
+    Todo *todo3 = [[Todo alloc] initWithTitle:@"todo3" andDescription:d3 andPriority:Misc andCompleteStatus:NO];
     
     [self initDatasource];
     [self insertToDoItem:todo1];

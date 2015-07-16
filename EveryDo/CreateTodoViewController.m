@@ -68,7 +68,7 @@
 }
 
 - (IBAction)sumbitTodo:(UIButton *)sender {
-    Todo *newTodo = [[Todo alloc] initWithTitle:self.textFieldTitle.text andDescription:self.textFieldDescsription.text andPriority:self.priority andCompleteStatus:NO];
+    Todo *newTodo = [[Todo alloc] initWithTitle:self.textFieldTitle.text andDescription:self.textFieldDescsription.attributedText andPriority:self.priority andCompleteStatus:NO];
 
     [self.delegate retrieveTodoItem:newTodo];
     

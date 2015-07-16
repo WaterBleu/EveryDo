@@ -14,7 +14,7 @@
 
 @implementation Todo
 
-- (instancetype)initWithTitle:(NSString*)title andDescription:(NSString*)description andPriority:(Priority)priority andCompleteStatus:(BOOL)isComplete
+- (instancetype)initWithTitle:(NSString*)title andDescription:(NSAttributedString*)description andPriority:(Priority)priority andCompleteStatus:(BOOL)isComplete
 {
     self = [super init];
     if (self) {

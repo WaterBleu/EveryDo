@@ -21,11 +21,11 @@ typedef NS_ENUM(NSInteger, Priority){
 #define priorityTypeArray @"Emergency", @"High", @"Medium", @"Low", @"Misc", nil
 
 @property (nonatomic) NSString* title;
-@property (nonatomic) NSString* todoDescription;
+@property (nonatomic) NSAttributedString* todoDescription;
 @property (nonatomic) Priority priority;
 @property (nonatomic) BOOL isComplete ;
 
-- (instancetype)initWithTitle:(NSString*)title andDescription:(NSString*)description andPriority:(Priority)priority andCompleteStatus:(BOOL)isComplete;
+- (instancetype)initWithTitle:(NSString*)title andDescription:(NSAttributedString*)description andPriority:(Priority)priority andCompleteStatus:(BOOL)isComplete;
 
 -(NSString*) priorityTypeEnumToString:(Priority)enumVal;
 

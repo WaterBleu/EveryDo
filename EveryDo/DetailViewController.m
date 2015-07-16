@@ -31,7 +31,7 @@
     // Update the user interface for the detail item.
     if (self.detailItem) {
         Todo *object = self.detailItem;
-        self.detailDescriptionLabel.text = object.todoDescription;
+        self.detailDescriptionLabel.attributedText = object.todoDescription;
         self.detailViewNav.title = [NSString stringWithFormat:@"%@ - %@",[object priorityTypeEnumToString:object.priority] , object.title];
         
     }
